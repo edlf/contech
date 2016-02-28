@@ -1,0 +1,60 @@
+This is a unoficial howto.
+
+On ubuntu install build-essential, libzip-dev, bison, flex, libboost-all-dev, clang, llvm.
+
+Download GNU binutils: binutils-2.26.tar.gz.
+
+Extract the binutils source to a folder named binutils.
+
+Download LLVM 3.4.2 packages: cfe-3.4.2.src.tar.gz, compiler-rt-3.4.src.tar.gz, llvm-3.4.2.src.tar.gz
+
+Extract llvm source to the llvm folder, do not delete the already existing files.
+
+Extract the compiler-rt source to the llvm/projects folder and rename the folder to compiler-rt.
+
+Extract the cfe source to the llvm/tools folder and rename the folder to clang.
+
+Go to the llvm/lib/Transforms folder and open the Makefile. On the PARALLEL_DIRS entry add this " Contech DynamicAnalysis" to the end.
+
+In the end the folder structure should look like this:
+
+contech \
+ |- backend
+ |- binutils
+ |- common
+ |- llvm \ (llvm-3.4.2.src.tar.gz contents here)
+      |- ...
+      |- lib \
+        |- ...
+        |- Transforms \
+          |- Contech
+          |- DynamicAnalysis
+          |- ...
+      |- ...
+      |- ...
+      |- projects \
+        |- compiler-rt (compiler-rt-3.4.src.tar.gz contents here)
+        |- ...
+      |- ...
+      |- tools \
+        |- ...
+        |- clang (cfe-3.4.2.src.tar.gz contents here)
+        |- ...
+ |- middle
+ |- pin
+ |- scripts
+
+CD in to the binutils folder and run "./configure --enable-gold --enable-plugins --disable-werror", then run "make all-gold -j4".
+
+Edit set_vars.sh and adapt to your folder locations. Run ". ./set_vars.sh", don't close this terminal or else you will need to run this again.
+
+Go back to the root dir (contech) and run "make -j4". Ignore "/bin/sh: 5: [[: not found" errors.
+
+Go to contech/common/eventLib/ folder and run "make install".
+
+Go to contech/common/runtime/ folder and run "make".
+
+Go to contech/common/taskLib/ folder and run "make install".
+
+CD in to the llvm folder and run "./configure --with-binutils-include=/home/user/contech/binutils/include/ --enable-optimized --enable-cxx11" (edit the binutils include dir to mach your folder locations). Now run "make -j4". If you want to check the build run "make check-all".
+
