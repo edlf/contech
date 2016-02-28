@@ -13,9 +13,9 @@ $(PROJECT): $(OBJECTS)
 
 install: all
 	mkdir -p $(CONTECH_LLVM_HOME)/lib
-	mkdir -p $(CONTECH_LLVM_HOME)/include
+	mkdir -p $(LLVM_SRC)/include
 	cp $(PROJECT) $(CONTECH_LLVM_HOME)/lib
-	cp $(HEADERS) $(CONTECH_LLVM_HOME)/include
+	cp $(HEADERS) $(LLVM_SRC)/include
 
 clean:
 	rm $(PROJECT) $(OBJECTS)
