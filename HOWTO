@@ -1,4 +1,4 @@
-This is a unoficial howto.
+This is a unofficial howto.
 
 On ubuntu install build-essential, libzip-dev, bison, flex, libboost-all-dev, clang, llvm.
 
