@@ -1,6 +1,6 @@
 This is a unofficial howto.
 
-On ubuntu install build-essential, libzip-dev, bison, flex, libboost-all-dev, clang, llvm.
+On ubuntu install these packages: build-essential, libzip-dev, bison, flex, libboost-all-dev, clang, llvm. For the TaskGraphVisualizer you also need to install the libgraphviz-dev package.
 
 Download GNU binutils: binutils-2.26.tar.gz.
 
