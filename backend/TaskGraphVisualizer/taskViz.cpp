@@ -1,7 +1,10 @@
-#include "gvc.h"
-#include "cgraph.h"
+// Graphviz includes
+#include <graphviz/gvc.h>
+#include <graphviz/cgraph.h>
+
 #include "../../common/taskLib/Task.hpp"
 #include "../CommTracker/CommTracker.hpp"
+
 #include <iostream>
 #include <map>
 #include <set>
